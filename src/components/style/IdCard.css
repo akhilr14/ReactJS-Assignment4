@@ -1,0 +1,70 @@
+.flip-card {
+  background-color: transparent;
+  width: 180px;
+  height: 250px;
+  perspective: 1000px;
+  margin: 10px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+}
+.flip-card-front {
+  background-color: white;
+}
+
+.flip-card-back {
+  background-color: #f8f9fa;
+  transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* .IdCard-Container {
+  width: 160px;
+  height: 250px;
+  border-style: outset;
+  border-width: 5px;
+  border-radius: 15%;
+}
+
+.IdCard-Photo {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 100px;
+  border-style: solid;
+  margin: 0 auto;
+  margin-top: 10%;
+}
+.IdCard-Photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.IdCard-Details {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} */
