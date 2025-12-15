@@ -1,3 +1,6 @@
+import Next from "../assets/slider-right.svg";
+import Prev from "../assets/slider-left.svg";
+import "./style/Pagination.css";
 export default function Pagination({
   totalPosts,
   postsPerPage,
@@ -10,27 +13,30 @@ export default function Pagination({
     pages.push(i);
   }
   return (
-    <div>
+    <div className="pagination-container">
       <nav>
         <ul className="pagination justify-content-center">
           <li className={currentPage != 1 ? "page-item" : "page-item disabled"}>
-            <a
+            <button
               className="page-link"
               onClick={() => setCurrentPage(currentPage - 1)}
             >
-              Previous
-            </a>
+              <img src={Prev} alt="prev" />
+            </button>
           </li>
           {pages.map((page, index) => {
             return (
-              <li className="page-item" key={index}>
-                <a
+              <li
+                className={`page-item ${currentPage === page ? "active" : ""}`}
+                key={index}
+              >
+                <button
                   className="page-link"
                   key={index}
                   onClick={() => setCurrentPage(page)}
                 >
                   {page}
-                </a>
+                </button>
               </li>
             );
           })}
@@ -39,16 +45,15 @@ export default function Pagination({
               currentPage != pages.length ? "page-item" : "page-item disabled"
             }
           >
-            <a
+            <button
               className="page-link"
               onClick={() => setCurrentPage(currentPage + 1)}
             >
-              Next
-            </a>
+              <img src={Next} alt="next" />
+            </button>
           </li>
         </ul>
       </nav>
-      ;
     </div>
   );
 }

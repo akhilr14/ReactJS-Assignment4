@@ -1,13 +1,9 @@
 .form-container {
-  padding: 20px;
+  width: 600px;
+  padding: 5px;
   padding-bottom: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-top: 20px;
 }
 
 .form-container button {
-  position: relative;
   margin: 10px;
-  margin-top: 20px;
 }

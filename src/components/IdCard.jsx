@@ -9,46 +9,6 @@ export default function IdCard() {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   return (
-    // <div className="IdCard-Container">
-    //   <div className="IdCard-Photo">
-    //     <img src={Photo} alt="Photo" />
-    //   </div>
-    //   <div className="IdCard-Details">
-    //     <p>NAME</p>
-    //   </div>
-    // </div>
-
-    // <div className="card">
-    //   <img
-    //     className="card-img-top"
-    //     src={Photo}
-    //     alt="Card image cap"
-    //     style={{
-    //       width: "150px",
-    //       height: "150px",
-    //       objectFit: "cover",
-    //       margin: "0 auto",
-    //     }}
-    //   />
-    //   <div className="card-body">
-    //     <h5 className="card-title">NAME</h5>
-    //     <h6>AGE GENDER</h6>
-    //     <h6>Phone Num</h6>
-    //     <h6>Email</h6>
-    //     <div>
-    //       <button
-    //         type="button"
-    //         class="btn btn-outline-danger"
-    //         style={{ margin: "0px 30px 0px 0px" }}
-    //       >
-    //         Delete
-    //       </button>
-    //       <button type="button" class="btn btn-primary">
-    //         Edit
-    //       </button>
-    //     </div>
-    //   </div>
-    // </div>
     <div className="flip-card">
       <div className="flip-card-inner">
         {/* Front Side */}

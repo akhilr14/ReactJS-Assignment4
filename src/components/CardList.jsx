@@ -1,13 +1,12 @@
-import CardWrapper from "./CardWrapper";
 import IdCard from "./IdCard";
-
+import "./style/CardList.css";
 export default function CardList({ idData }) {
   return (
-    <div className="id-list-container">
+    <div className="idlist-container">
       {idData.map((id, index) => {
         return (
-          <div className="test" key={index}>
-            {id}
+          <div key={id}>
+            <IdCard />
           </div>
         );
       })}
