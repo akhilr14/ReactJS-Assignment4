@@ -1,7 +1,7 @@
 .flip-card {
   background-color: transparent;
-  width: 180px;
-  height: 250px;
+  width: 220px;
+  height: 320px;
   perspective: 1000px;
   margin: 10px;
 }
@@ -10,9 +10,9 @@
   position: relative;
   width: 100%;
   height: 100%;
-  transition: transform 1s;
+  transition: transform 0.8s;
+  transition-delay: 3s;
   transform-style: preserve-3d;
-  transition-delay: 1s;
 }
 
 .flip-card:hover .flip-card-inner {
@@ -26,46 +26,49 @@
   height: 100%;
   backface-visibility: hidden;
   border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .flip-card-front {
-  background-color: white;
+  background-color: #fff;
+  padding: 10px;
 }
 
 .flip-card-back {
   background-color: #f8f9fa;
   transform: rotateY(180deg);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 10px;
+  justify-content: space-around;
+  text-align: center;
+  font-size: 0.9rem;
 }
 
-/* .IdCard-Container {
-  width: 160px;
-  height: 250px;
-  border-style: outset;
-  border-width: 5px;
+/* Image Styling */
+.flip-card img {
+  width: 100px;
+  height: 120px;
+  object-fit: cover;
   border-radius: 15%;
+  border: 2px solid #ccc;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.IdCard-Photo {
-  display: flex;
-
-  align-items: center;
-  justify-content: center;
-  width: 80px;
-  height: 100px;
-  border-style: solid;
-  margin: 0 auto;
-  margin-top: 10%;
-}
-.IdCard-Photo img {
+/* Text container inside card */
+.card-body {
   width: 100%;
-  height: 100%;
-  object-fit: fill;
+  flex: 1;
+  overflow-y: auto;
+  padding: 5px;
+  box-sizing: border-box;
 }
 
-.IdCard-Details {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-} */
+/* Buttons on back side */
+.flip-card-back button {
+  margin: 5px 5px;
+  width: 80px;
+}

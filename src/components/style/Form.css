@@ -1,7 +1,9 @@
 .form-container {
-  width: 600px;
-  padding: 5px;
-  padding-bottom: 10px;
+  height: 50vh;
+  width: 500px;
+  margin: 40px 10px 10px 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .form-container button {
