@@ -1,5 +1,5 @@
 import ReactDom from "react-dom";
-import "../components/style/Portal.css";
+import "./Portal.css";
 
 export default function Portal({ open, children, onClose }) {
   if (!open) return null;

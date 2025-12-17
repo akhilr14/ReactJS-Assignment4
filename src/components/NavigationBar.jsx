@@ -1,12 +1,11 @@
 import { useState } from "react";
-import CardWrapper from "./CardWrapper";
-import Home from "./Home";
-import Portal from "./Portal";
-import Form from "./Form";
-import Logo from "../assets/logo-tagline-white.svg";
+import CardWrapper from "./CardWrapper/CardWrapper";
+import Home from "./Home/Home";
+import Logo from "C:/Users/akhil.r/Desktop/Assignments/ReactJS/Assignment4/assignment4/src/assets/logo-tagline-white.svg";
 import { authenticate } from "./service";
 
 export default function NavigationBar() {
+  const token = sessionStorage.getItem("authToken");
   const [homeView, setHomeView] = useState(true);
 
   return (
@@ -38,7 +37,16 @@ export default function NavigationBar() {
           </li>
         </ul>
       </nav>
-      {homeView ? <Home /> : <CardWrapper />}
+      {homeView ? (
+        <Home />
+      ) : token ? (
+        <CardWrapper />
+      ) : (
+        <>
+          <h1>Authentication Failed</h1>
+          <h3>Goto Home</h3>
+        </>
+      )}
     </>
   );
 }

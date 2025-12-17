@@ -1,11 +1,11 @@
-import "../components/style/IdCard.css";
-import genderMale from "../assets/mars-solid-full.svg";
-import genderFemale from "../assets/venus-solid-full.svg";
-import other from "../assets/genderless-solid-full.svg";
+import "./IdCard.css";
+import genderMale from "C:/Users/akhil.r/Desktop/Assignments/ReactJS/Assignment4/assignment4/src/assets/mars-solid-full.svg";
+import genderFemale from "C:/Users/akhil.r/Desktop/Assignments/ReactJS/Assignment4/assignment4/src/assets/venus-solid-full.svg";
+import other from "C:/Users/akhil.r/Desktop/Assignments/ReactJS/Assignment4/assignment4/src/assets/genderless-solid-full.svg";
 import { useState } from "react";
-import Portal from "./Portal";
-import Form from "./Form";
-import Delete from "./Delete";
+import Portal from "../Portal/Portal";
+import Form from "../Form/Form";
+import Delete from "../Delete";
 
 export default function IdCard({ employee, refreshEmployees }) {
   const [isOpenForm, setIsOpenForm] = useState(false);

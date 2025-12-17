@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import "./style/Form.css";
-import { postEmployee, putEmployee } from "./service";
+import "./Form.css";
+import { postEmployee, putEmployee } from "../service";
 
 const initialState = {
   employeeID: 0,

@@ -1,6 +1,6 @@
-import Next from "../assets/slider-right.svg";
-import Prev from "../assets/slider-left.svg";
-import "./style/Pagination.css";
+import Next from "C:/Users/akhil.r/Desktop/Assignments/ReactJS/Assignment4/assignment4/src/assets/slider-right.svg";
+import Prev from "C:/Users/akhil.r/Desktop/Assignments/ReactJS/Assignment4/assignment4/src/assets/slider-left.svg";
+import "./Pagination.css";
 export default function Pagination({
   totalPosts,
   postsPerPage,

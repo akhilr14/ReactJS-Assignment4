@@ -1,5 +1,5 @@
-import IdCard from "./IdCard";
-import "./style/CardList.css";
+import IdCard from "../IdCard/IdCard";
+import "./CardList.css";
 
 export default function CardList({ idData, refreshEmployees }) {
   return (

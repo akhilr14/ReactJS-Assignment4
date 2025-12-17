@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import "../components/style/CardWrapper.css";
-import Pagination from "./Pagination";
-import CardList from "./CardList";
-import Portal from "./Portal";
-import Form from "./Form";
-import { getAllEmployee } from "./service";
+import "./CardWrapper.css";
+import Pagination from "../Pagination/Pagination";
+import CardList from "../CardList/CardList";
+import Portal from "../Portal/Portal";
+import Form from "../Form/Form";
+import { getAllEmployee } from "../service";
 
 export default function CardWrapper() {
   const [fetchedData, setFetchedData] = useState([]);
