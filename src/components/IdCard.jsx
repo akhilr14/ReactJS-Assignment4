@@ -1,17 +1,33 @@
 import "../components/style/IdCard.css";
-import Photo from "../assets/Picture1.png";
+import genderMale from "../assets/mars-solid-full.svg";
+import genderFemale from "../assets/venus-solid-full.svg";
+import other from "../assets/genderless-solid-full.svg";
 import { useState } from "react";
 import Portal from "./Portal";
 import Form from "./Form";
 import Delete from "./Delete";
 
-export default function IdCard({ employee }) {
+export default function IdCard({ employee, refreshEmployees }) {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [isOpenDelete, setIsOpenDelete] = useState(false);
 
   const fullName = `${employee.firstName} ${employee.lastName}`;
   const genderLabel =
-    employee.gender === 0 ? "Male" : employee.gender === 1 ? "Female" : "Other";
+    employee.gender === 0
+      ? genderMale
+      : employee.gender === 1
+      ? genderFemale
+      : other;
+  const designation =
+    employee.designation === 0
+      ? "Intern"
+      : employee.designation === 1
+      ? "Developer"
+      : employee.designation === 2
+      ? "Manager"
+      : employee.designation === 3
+      ? "HR"
+      : "Other";
 
   return (
     <div className="flip-card">
@@ -31,12 +47,18 @@ export default function IdCard({ employee }) {
             }}
           />
 
-          <div
-            className="card-body text-center"
-            style={{ padding: "5px 10px" }}
-          >
+          <div className="card-body text-center">
             <h5 className="card-title">{fullName}</h5>
-            <h6>{genderLabel}</h6>
+            <img
+              className="card-img-top"
+              src={genderLabel}
+              alt="Photo"
+              style={{
+                width: "30px",
+                height: "30px",
+                margin: "0px auto 10px auto",
+              }}
+            />
             <h6>
               <strong>Phone:</strong> {employee.mobileNumber || "N/A"}
             </h6>
@@ -48,13 +70,20 @@ export default function IdCard({ employee }) {
 
         <div className="flip-card-back card">
           <div className="card-body text-center">
-            <h5 className="card-title">{fullName}</h5>
-            <h6>{genderLabel}</h6>
             <h6>
-              <strong>Phone:</strong> {employee.mobileNumber || "N/A"}
+              <strong>Address:</strong> {employee.postalAddress || "N/A"}
             </h6>
             <h6>
-              <strong>Email:</strong> {employee.personalEmail}
+              <strong>City:</strong> {employee.city}
+            </h6>
+            <h6>
+              <strong>Country:</strong> {employee.country}
+            </h6>
+            <h6>
+              <strong>DOB:</strong> {employee.dateOfBirth.slice(0, 10)}
+            </h6>
+            <h6>
+              <strong>Designation:</strong> {designation}
             </h6>
 
             <button
@@ -78,11 +107,20 @@ export default function IdCard({ employee }) {
 
       {/* ---------- MODALS ---------- */}
       <Portal open={isOpenForm} onClose={() => setIsOpenForm(false)}>
-        <Form employee={employee} isEdit />
+        <Form
+          employee={employee}
+          isEdit={true}
+          onClose={() => setIsOpenForm(false)}
+          refreshEmployees={refreshEmployees}
+        />
       </Portal>
 
       <Portal open={isOpenDelete} onClose={() => setIsOpenDelete(false)}>
-        <Delete employeeID={employee.employeeID} />
+        <Delete
+          employeeId={employee.employeeID}
+          onClose={() => setIsOpenDelete(false)}
+          refreshEmployees={refreshEmployees}
+        />
       </Portal>
     </div>
   );

@@ -7,8 +7,14 @@
   margin: 0;
 }
 
-.cardWrapper {
+.card-wrapper {
   background-color: grey;
   padding: 25px;
   flex: 1;
+}
+
+.button-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

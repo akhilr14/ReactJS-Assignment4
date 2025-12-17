@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./style/Form.css";
-import PopUp from "./TestPopUp";
+import { postEmployee, putEmployee } from "./service";
 
 const initialState = {
   employeeID: 0,
@@ -21,9 +21,15 @@ const initialState = {
   password: "",
 };
 
-const Form = () => {
+const Form = ({ employee, isEdit, onClose, refreshEmployees }) => {
   const [data, setData] = useState(initialState);
   const [show, setShow] = useState(false);
+
+  useEffect(() => {
+    if (employee && isEdit) {
+      setData(employee);
+    }
+  }, [employee, isEdit]);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -33,34 +39,30 @@ const Form = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      if (isEdit) {
+        await putEmployee(data);
+      } else {
+        await postEmployee(data);
+      }
+
+      refreshEmployees();
+      onClose();
+    } catch (err) {
+      console.error(err);
+      alert("Something went wrong!");
+    }
     console.log("Submitted Data:", data);
-    setShow(true);
   };
 
   return (
     <>
-      <PopUp show={show} handleClose={() => setShow(false)} data={data} />
-
       <div className="form-container">
         <h2>Employee Registration</h2>
 
         <form onSubmit={handleSubmit}>
-          {/* Employee ID */}
-          <div className="form-group row">
-            <label className="col-sm-3 col-form-label">Employee ID: </label>
-            <div className="col-sm-9">
-              <input
-                type="number"
-                className="form-control"
-                name="employeeID"
-                value={data.employeeID}
-                onChange={handleChange}
-              />
-            </div>
-          </div>
-
           {/* First Name */}
           <div className="form-group row">
             <label className="col-sm-3 col-form-label">First Name: </label>
@@ -268,31 +270,26 @@ const Form = () => {
           </div>
 
           {/* Password */}
-          <div className="form-group row">
-            <label className="col-sm-3 col-form-label">Password: </label>
-            <div className="col-sm-9">
-              <input
-                type="password"
-                className="form-control"
-                name="password"
-                value={data.password}
-                onChange={handleChange}
-                required
-              />
+          {!isEdit && (
+            <div className="form-group row">
+              <label className="col-sm-3 col-form-label">Password: </label>
+              <div className="col-sm-9">
+                <input
+                  type="password"
+                  className="form-control"
+                  name="password"
+                  value={data.password}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
             </div>
-          </div>
+          )}
 
           {/* Buttons */}
           <div className="form-button-container">
             <button type="submit" className="btn btn-primary mr-sm-2">
               Submit
-            </button>
-            <button
-              type="button"
-              className="btn btn-outline-danger"
-              onClick={() => setData(initialState)}
-            >
-              Cancel
             </button>
           </div>
         </form>

@@ -4,10 +4,10 @@ import Home from "./Home";
 import Portal from "./Portal";
 import Form from "./Form";
 import Logo from "../assets/logo-tagline-white.svg";
+import { authenticate } from "./service";
 
 export default function NavigationBar() {
   const [homeView, setHomeView] = useState(true);
-  const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>
@@ -30,18 +30,15 @@ export default function NavigationBar() {
           </li>
           <li className="nav-item">
             <button
-              className="btn btn-outline-success mr-sm-5"
-              onClick={() => setIsOpen(true)}
+              className="btn btn-outline-warning mr-sm-5"
+              onClick={() => authenticate()}
             >
-              Add
+              Authenticate
             </button>
           </li>
         </ul>
       </nav>
       {homeView ? <Home /> : <CardWrapper />}
-      <Portal open={isOpen} onClose={() => setIsOpen(false)}>
-        <Form />
-      </Portal>
     </>
   );
 }
