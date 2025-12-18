@@ -1,10 +1,10 @@
-import NavigationBar from "./components/NavigationBar";
+import MainLayout from "./components/MainLayout";
 import "./App.css";
 function App() {
   return (
     <>
       <div>
-        <NavigationBar />
+        <MainLayout />
       </div>
     </>
   );

@@ -1,0 +1,18 @@
+.form-container {
+  height: 50vh;
+  width: 500px;
+  margin: 40px 10px 0px 10px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+.form-container h2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.form-container button {
+  margin: 10px;
+}

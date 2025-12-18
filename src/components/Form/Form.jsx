@@ -60,7 +60,7 @@ const Form = ({ employee, isEdit, onClose, refreshEmployees }) => {
   return (
     <>
       <div className="form-container">
-        <h2>Employee Registration</h2>
+        <h2>Employee</h2>
 
         <form onSubmit={handleSubmit}>
           {/* First Name */}

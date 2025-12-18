@@ -1,9 +1,8 @@
 const URL = "https://trainingapi.zerone-consulting.net/api.publish/api";
 
 //#region - Authenicate
-const authenticate = async () => {
+const authenticate = async (creds) => {
   try {
-    const creds = { username: "admin", password: "Admin" };
     const res = await fetch(`${URL}/Account`, {
       method: "POST",
       headers: {
@@ -14,8 +13,10 @@ const authenticate = async () => {
 
     const token_api = await res.json();
     sessionStorage.setItem("authToken", token_api.token);
+    return token_api.token;
   } catch (err) {
     console.log(err);
+    return null;
   }
 };
 //#endregion
