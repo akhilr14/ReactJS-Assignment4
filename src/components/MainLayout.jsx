@@ -53,7 +53,7 @@ export default function MainLayout() {
                 className="btn btn-outline-warning mr-sm-5"
                 onClick={openAuth}
               >
-                Authenticate
+                Login
               </button>
             </li>
           )}
