@@ -50,7 +50,7 @@ export default function MainLayout() {
           {!token && (
             <li className="nav-item">
               <button
-                className="btn btn-outline-warning mr-sm-5"
+                className="btn btn-outline-primary mr-sm-5"
                 onClick={openAuth}
               >
                 Login
