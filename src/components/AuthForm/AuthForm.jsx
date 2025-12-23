@@ -3,6 +3,7 @@ import { authenticate } from "../service";
 import "./AuthForm.css";
 export default function AuthForm({ onClose, onSuccess }) {
   const [data, setData] = useState({ username: "", password: "" });
+  const [showPassword, setShowPassword] = useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -18,14 +19,19 @@ export default function AuthForm({ onClose, onSuccess }) {
     const { name, value } = e.target;
     setData((prev) => ({ ...prev, [name]: value }));
   };
+  function handleShowPassword() {
+    if (showPassword) {
+      setShowPassword(false);
+    } else {
+      setShowPassword(true);
+    }
+  }
   return (
     <div className="form-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group row">
-          <label className="col-sm-3 col-form-label" htmlFor="username">
-            Username:{" "}
-          </label>
+          <label className="col-sm-3 col-form-label">Username: </label>
           <div className="col-sm-9">
             <input
               type="text"
@@ -38,18 +44,18 @@ export default function AuthForm({ onClose, onSuccess }) {
           </div>
         </div>
         <div className="form-group row">
-          <label className="col-sm-3 col-form-label" htmlFor="password">
-            Password:{" "}
-          </label>
+          <label className="col-sm-3 col-form-label">Password: </label>
           <div className="col-sm-9">
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               className="form-control"
               name="password"
               value={data.password}
               onChange={handleChange}
               required
             />
+            <input type="checkbox" onChange={handleShowPassword} />
+            <label className="col-sm-5 col-form-label">show password </label>
           </div>
         </div>
         <div className="form-button-container">

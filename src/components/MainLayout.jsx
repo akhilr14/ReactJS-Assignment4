@@ -18,6 +18,11 @@ export default function MainLayout() {
     setShowAuth(false);
   }
 
+  function handleLogout() {
+    setToken(() => sessionStorage.removeItem("authToken"));
+    setHomeView(true);
+  }
+
   return (
     <>
       <nav className="navbar navbar-expand-sm bg-dark navbar-dark sticky-top">
@@ -37,14 +42,24 @@ export default function MainLayout() {
 
         <ul className="navbar-nav ml-auto">
           {token && (
-            <li className="nav-item">
-              <button
-                className="btn btn-outline-success mr-sm-5"
-                onClick={() => setHomeView(false)}
-              >
-                List All
-              </button>
-            </li>
+            <>
+              <li className="nav-item">
+                <button
+                  className="btn btn-success mr-sm-2"
+                  onClick={() => setHomeView(false)}
+                >
+                  List All
+                </button>
+              </li>
+              <li className="nav-item">
+                <button
+                  className="btn btn-outline-danger mr-sm-5"
+                  onClick={handleLogout}
+                >
+                  Logout
+                </button>
+              </li>
+            </>
           )}
 
           {!token && (

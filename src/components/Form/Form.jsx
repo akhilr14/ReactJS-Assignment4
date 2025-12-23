@@ -23,7 +23,7 @@ const initialState = {
 
 const Form = ({ employee, isEdit, onClose, refreshEmployees }) => {
   const [data, setData] = useState(initialState);
-  const [show, setShow] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   useEffect(() => {
     if (employee && isEdit) {
@@ -56,6 +56,14 @@ const Form = ({ employee, isEdit, onClose, refreshEmployees }) => {
     }
     console.log("Submitted Data:", data);
   };
+
+  function handleShowPassword() {
+    if (showPassword) {
+      setShowPassword(false);
+    } else {
+      setShowPassword(true);
+    }
+  }
 
   return (
     <>
@@ -275,13 +283,18 @@ const Form = ({ employee, isEdit, onClose, refreshEmployees }) => {
               <label className="col-sm-3 col-form-label">Password: </label>
               <div className="col-sm-9">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   className="form-control"
                   name="password"
                   value={data.password}
                   onChange={handleChange}
                   required
                 />
+
+                <input type="checkbox" onChange={handleShowPassword} />
+                <label className="col-sm-5 col-form-label">
+                  show password{" "}
+                </label>
               </div>
             </div>
           )}
